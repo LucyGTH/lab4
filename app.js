@@ -14,6 +14,8 @@ var hello = require('./routes/hello');
 // var user = require('./routes/user');
 
 var app = express();
+var index = require('./routes/index');
+var project = require('./routes/project');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -44,3 +46,7 @@ app.get('/hello/:userName', hello.view);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+app.get('/', index.view);
+app.get('/project/:name', project.viewProject);
+
